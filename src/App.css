@@ -2,37 +2,127 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.container {
+  height: 340px;
+  width: 580px;
+  min-width: 580px;
+  min-height: 304px;
+  padding: 15px 50px;
+  border-radius: 5px;
   color: white;
+  background: rgba(53, 53, 53, 0.5);
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
 }
 
-.App-link {
-  color: #61dafb;
+.form {
+  width: 480px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+h1 {
+  font-size: 30px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+label {
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+input {
+  width: 95%;
+  margin-bottom: 15px;
+  color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background: inherit;
+  outline: none;
+}
+input:focus {
+  border-color: #0092cc;
+}
+
+.complete-title {
+  animation: complete 4s infinite;
+}
+
+@keyframes complete {
+  0% {
+    color: #0092cc;
   }
-  to {
-    transform: rotate(360deg);
+  25% {
+    color: #01658d;
+  }
+  50% {
+    color: #005a7e;
+    transform: scale(1.5);
+  }
+  75% {
+    color: #024661;
+  }
+  100% {
+    color: #027dad;
+  }
+}
+
+/* Button */
+button {
+  width: 50%;
+  height: 40px;
+  border-radius: 20px;
+  margin-top: 15px;
+  border: none;
+  text-transform: uppercase;
+  background: #0092cc;
+  color: white;
+  cursor: pointer;
+  outline: none;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  filter: brightness(50%);
+}
+
+li span {
+  display: block;
+  font-size: 80px;
+  text-align: center;
+  background: #027dad;
+}
+
+/* Media queries */
+@media screen and (max-width: 600px) {
+  .container {
+    min-width: unset;
+    width: 95vw;
+    min-height: 245px;
+    padding: 10px;
+    margin: auto;
+  }
+  .form {
+    width: unset;
+  }
+  input {
+    width: 93%;
+  }
+  h1 {
+    font-size: 20px;
+  }
+  li {
+    font-size: 15px;
+  }
+  li span {
+    font-size: 40px;
+  }
+  button {
+    width: 100%;
+  }
+  .sub-container {
+    justify-content: space-around;
   }
 }
