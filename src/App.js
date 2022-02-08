@@ -10,6 +10,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState("home");
   const [countdownTitle, setCountdownTitle] = useState("");
   const [countdownDate, setCountdownDate] = useState("");
+  const [countdownActive, setCountdownActive] = useState("");
   const [time, setTime] = useState({
     days: "",
     hours: "",
@@ -20,6 +21,7 @@ function App() {
   return (
     <div className="App">
       <VideoBackground />
+
       <div className="container">
         {currentPage === "home" ? (
           <InputView
@@ -28,15 +30,29 @@ function App() {
             setCountdownDate={setCountdownDate}
             time={time}
             setTime={setTime}
+            setCountdownActive={setCountdownActive}
           />
-        ) : "countdown" ? (
-          <CountdownView setCurrentPage={setCurrentPage} countdownTitle={countdownTitle} {...time} />
-        ) : (
+        ) : currentPage === "countdown" ? (
+          <CountdownView
+            setCurrentPage={setCurrentPage}
+            countdownTitle={countdownTitle}
+            {...time}
+            countdownActive={countdownActive}
+            setCountdownTitle={setCountdownTitle}
+            setCountdownDate={setCountdownDate}
+            setCountdownActive={setCountdownActive}
+            setTime={setTime}
+          />
+        ) : currentPage === "complete" ? (
           <CompletedView
             setCurrentPage={setCurrentPage}
             countdownTitle={countdownTitle}
+            setCountdownTitle={setCountdownTitle}
             countdownDate={countdownDate}
+            setCountdownDate={setCountdownDate}
           />
+        ) : (
+          <></>
         )}
       </div>
     </div>
