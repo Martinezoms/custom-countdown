@@ -10,7 +10,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState("home");
   const [countdownTitle, setCountdownTitle] = useState("");
   const [countdownDate, setCountdownDate] = useState("");
-  const [countdownActive, setCountdownActive] = useState("");
+  const [countdownActive, setCountdownActive] = useState(0);
   const [time, setTime] = useState({
     days: "",
     hours: "",

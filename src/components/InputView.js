@@ -2,7 +2,8 @@ import { useEffect } from "react";
 
 function InputView({ setCurrentPage, setCountdownTitle, setCountdownDate, setTime, setCountdownActive }) {
   let countdownValue = new Date();
-  let active;
+  let active = 0;
+
   let savedCountdown;
 
   const today = new Date().toISOString().split("T")[0];
@@ -27,13 +28,14 @@ function InputView({ setCurrentPage, setCountdownTitle, setCountdownDate, setTim
         clearInterval(active);
         setCurrentPage("complete");
       } else {
+        setCountdownActive(active);
         setTime({
           days: days < 10 ? `0${days}` : days,
           hours: hours < 10 ? `0${hours}` : hours,
           minutes: minutes < 10 ? `0${minutes}` : minutes,
           seconds: seconds < 10 ? `0${seconds}` : seconds
         });
-        setCountdownActive(active);
+
         setCurrentPage("countdown");
       }
     }, second);
@@ -73,7 +75,8 @@ function InputView({ setCurrentPage, setCountdownTitle, setCountdownDate, setTim
 
   useEffect(() => {
     restorePreviousCountdown();
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className=" relative top-3 h-full flex flex-col items-center sub-container">

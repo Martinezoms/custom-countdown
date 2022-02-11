@@ -13,9 +13,10 @@ function CountdownView({
 }) {
   const resetValues = () => {
     clearInterval(countdownActive);
+    setCountdownActive(0);
     setCountdownTitle("");
     setCountdownDate("");
-    setCountdownActive("");
+    localStorage.removeItem("countdown");
     setTime({
       days: "",
       hours: "",
@@ -23,7 +24,6 @@ function CountdownView({
       seconds: ""
     });
     setCurrentPage("home");
-    localStorage.removeItem("countdown");
   };
 
   return (
